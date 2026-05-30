@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Registration Form</title>
+
+    <style>
+        form {
+            width: 300px;
+            padding: 25px;
+            border: 2px solid black;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        output {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <form onsubmit="result.value='Registration Successful!'">
+
+        <input type="text" placeholder="Enter your name" required autofocus>
+
+        <input type="email" placeholder="Enter your email" required>
+
+        <input type="date" required>
+
+        <select required>
+            <option value="">Select Event</option>
+            <option>Music</option>
+            <option>Sports</option>
+            <option>Workshop</option>
+        </select>
+
+        <textarea placeholder="Enter message" required></textarea>
+
+        <button type="submit">Register</button>
+
+        <br><br>
+
+        <output name="result"></output>
+
+    </form>
+
+</body>
+</html>

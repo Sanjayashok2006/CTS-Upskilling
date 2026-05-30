@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chrome DevTools Debugging</title>
+
+    <style>
+        #box {
+            width: 200px;
+            padding: 20px;
+            background-color: lightblue;
+            border: 2px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Debugging with Chrome DevTools</h1>
+
+    <div id="box">
+        Sample Box
+    </div>
+
+    <button onclick="calculateTotal()">
+        Calculate Total
+    </button>
+
+    <p id="result"></p> 
+
+    <script>
+        console.log("Page Loaded Successfully");
+
+        function calculateTotal() {
+
+            let fee = 500;
+            let discount = 100;
+
+            console.log("Fee =", fee);
+            console.log("Discount =", discount);
+
+            let total = fee - discount;
+
+            console.log("Total =", total);
+
+            document.getElementById("result").innerHTML =
+                "Total Fee: ₹" + total;
+        }
+    </script>
+
+</body>
+</html>

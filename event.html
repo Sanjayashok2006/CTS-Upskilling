@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Feedback</title>
+
+    <style>
+        img {
+            width: 150px;
+            border: 2px solid black;
+        }
+
+        textarea {
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+
+    <script>
+        function validatePhone() {
+            let phone = document.getElementById("phone").value;
+
+            if (phone.length != 10) {
+                alert("Enter a valid 10 digit phone number");
+            }
+        }
+
+        function showFee() {
+            let event = document.getElementById("event").value;
+            let fee = document.getElementById("fee");
+
+            if (event == "Music") {
+                fee.innerHTML = "Fee: ₹500";
+            }
+            else if (event == "Sports") {
+                fee.innerHTML = "Fee: ₹300";
+            }
+            else {
+                fee.innerHTML = "Fee: ₹200";
+            }
+        }
+
+        function confirmSubmit() {
+            alert("Feedback Submitted Successfully");
+        }
+
+        function enlargeImage(img) {
+            img.style.width = "300px";
+        }
+
+        function countChars() {
+            let text = document.getElementById("feedback").value;
+            document.getElementById("count").innerHTML =
+                "Characters: " + text.length;
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Event Feedback Form</h2>
+
+    Phone Number:
+    <input type="text" id="phone" onblur="validatePhone()">
+
+    <br><br>
+
+    Select Event:
+    <select id="event" onchange="showFee()">
+        <option>Music</option>
+        <option>Sports</option>
+        <option>Workshop</option>
+    </select>
+
+    <p id="fee"></p>
+
+    <img src="event.jpg" ondblclick="enlargeImage(this)">
+
+    <br><br>
+
+    Feedback:
+    <br>
+
+    <textarea id="feedback" onkeyup="countChars()"></textarea>
+
+    <p id="count">Characters: 0</p>
+
+    <button onclick="confirmSubmit()">Submit</button>
+
+</body>
+</html>
