@@ -4,25 +4,669 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal</title>
+    <title>Local Community Event Portal</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        /* Navigation Styling */
+        nav {
+            background-color: #222;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 20px;
+            text-decoration: none;
+        }
+
+        /* Welcome Banner */
+        #welcomeBanner {
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .highlight {
+            background-color: yellow;
+            color: black;
+            padding: 5px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        /* Image Gallery */
+        table {
+            margin: auto;
+        }
+
+        .eventImage {
+            width: 200px;
+            height: 130px;
+            border: 3px solid black;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .largeImage {
+            width: 350px;
+            height: 250px;
+        }
+
+
+        /* Form Styling */
+        form {
+            width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        button {
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+        }
+
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+    </style>
+
 </head>
 
-<body>
 
-    <!-- Navigation Section -->
-    <nav>
-        <h2>Navigation Bar</h2>
-    </nav>
+<body onbeforeunload="return warningMessage()">
 
-    <!-- Main Section -->
-    <main>
-        <h1>Welcome to the Student Portal</h1>
-        <p>This is the main content area.</p>
-    </main>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>© 2026 Student Portal</p>
-    </footer>
+<!-- Navigation Section -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+    <a href="help.html" target="_blank">Help</a>
+</nav>
+
+
+
+<!-- Main Section -->
+<main>
+
+
+<section id="home">
+
+<div id="welcomeBanner">
+    <h1>Welcome to City Community Portal</h1>
+
+    <p class="highlight">
+        Registered User Dashboard
+    </p>
+
+    <p>
+        Special Offer:
+        <span style="color:red; font-weight:bold;">
+            Free entry for first 100 registrations!
+        </span>
+    </p>
+</div>
+
+</section>
+
+
+
+<!-- Events Section -->
+<section id="events">
+
+<h2>Community Event Gallery</h2>
+
+
+<table>
+
+<tr>
+
+<td>
+<img src="event1.jpg"
+class="eventImage"
+alt="Music Event"
+title="Music Festival"
+ondblclick="resizeImage(this)">
+<br>
+<caption>Music Festival</caption>
+</td>
+
+
+<td>
+<img src="event2.jpg"
+class="eventImage"
+alt="Sports Event"
+title="Sports Day"
+ondblclick="resizeImage(this)">
+<br>
+<caption>Sports Day</caption>
+</td>
+
+
+<td>
+<img src="event3.jpg"
+class="eventImage"
+alt="Food Event"
+title="Food Festival"
+ondblclick="resizeImage(this)">
+<br>
+<caption>Food Festival</caption>
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+<img src="event4.jpg"
+class="eventImage"
+alt="Art Event"
+title="Art Show"
+ondblclick="resizeImage(this)">
+<br>
+<caption>Art Show</caption>
+</td>
+
+
+<td>
+<img src="event5.jpg"
+class="eventImage"
+alt="Tech Event"
+title="Tech Meetup"
+ondblclick="resizeImage(this)">
+<br>
+<caption>Tech Meetup</caption>
+</td>
+
+
+<td>
+<img src="event6.jpg"
+class="eventImage"
+alt="Workshop"
+title="Workshop"
+ondblclick="resizeImage(this)">
+<br>
+<caption>Workshop</caption>
+</td>
+
+
+</tr>
+
+</table>
+
+
+</section>
+
+
+
+
+
+<section>
+
+<h2>Event Registration</h2>
+
+
+<form onsubmit="submitForm(event)">
+
+
+Name:
+<input 
+type="text" 
+placeholder="Enter name"
+autofocus
+required>
+
+
+Email:
+<input 
+type="email"
+placeholder="Enter email"
+required>
+
+
+Phone:
+<input 
+type="text"
+id="phone"
+placeholder="Enter phone number"
+onblur="validatePhone()">
+
+
+
+Date:
+<input type="date" required>
+
+
+
+Select Event:
+
+<select id="eventType"
+onchange="showFee()"
+required>
+
+<option value="">Choose</option>
+<option value="Music">Music</option>
+<option value="Sports">Sports</option>
+<option value="Tech">Tech</option>
+
+</select>
+
+
+<p id="fee"></p>
+
+
+
+Feedback:
+
+<textarea 
+id="feedback"
+placeholder="Enter feedback"
+onkeyup="countCharacters()">
+</textarea>
+
+
+<p>
+Characters:
+<span id="count">0</span>
+</p>
+
+
+
+Message:
+
+<textarea placeholder="Message"></textarea>
+
+
+
+<br>
+
+<button 
+type="submit"
+onclick="buttonClick()">
+Register
+</button>
+
+
+<br><br>
+
+<output id="result"></output>
+
+
+</form>
+
+
+<button onclick="clearPreference()">
+Clear Preferences
+</button>
+
+
+</section>
+
+
+
+
+
+<section>
+
+
+<h2>Event Promo Video</h2>
+
+
+<video width="400"
+controls
+oncanplay="videoReady()">
+
+<source src="event.mp4" type="video/mp4">
+
+Your browser does not support video.
+
+</video>
+
+
+<p id="videoMsg"></p>
+
+
+</section>
+
+
+
+
+
+<section>
+
+
+<h2>Find Nearby Events</h2>
+
+
+<button onclick="findLocation()">
+Find Nearby Events
+</button>
+
+
+<p id="location"></p>
+
+
+</section>
+
+
+
+
+
+<!-- Contact Section -->
+<section id="contact">
+
+<h2>Contact Us</h2>
+
+<p>Email: cityevents@gmail.com</p>
+
+</section>
+
+
+
+</main>
+
+
+
+
+<!-- Footer Section -->
+
+<footer>
+
+<p>
+&copy; 2026 Local City Council
+</p>
+
+</footer>
+
+
+
+
+
+
+
+<script>
+
+
+console.log("Community Portal Loaded");
+
+
+
+// form submit
+
+function submitForm(event){
+
+event.preventDefault();
+
+document.getElementById("result").innerHTML =
+"Registration Successful!";
+
+let selected =
+document.getElementById("eventType").value;
+
+
+localStorage.setItem(
+"preferredEvent",
+selected
+);
+
+
+sessionStorage.setItem(
+"visited",
+"yes"
+);
+
+
+}
+
+
+
+
+
+// phone validation
+
+function validatePhone(){
+
+let phone =
+document.getElementById("phone").value;
+
+
+if(phone.length != 10){
+
+alert("Enter valid 10 digit phone number");
+
+}
+
+}
+
+
+
+
+
+// dropdown fee
+
+function showFee(){
+
+let event =
+document.getElementById("eventType").value;
+
+
+let fee="";
+
+
+if(event=="Music")
+fee="Fee: ₹200";
+
+else if(event=="Sports")
+fee="Fee: ₹100";
+
+else if(event=="Tech")
+fee="Fee: ₹300";
+
+
+document.getElementById("fee").innerHTML=fee;
+
+
+}
+
+
+
+
+// onclick
+
+function buttonClick(){
+
+alert("Submit button clicked");
+
+}
+
+
+
+
+// double click image resize
+
+function resizeImage(img){
+
+img.classList.toggle("largeImage");
+
+}
+
+
+
+
+
+// keyboard event
+
+function countCharacters(){
+
+let text =
+document.getElementById("feedback").value;
+
+
+document.getElementById("count").innerHTML =
+text.length;
+
+
+}
+
+
+
+
+
+// video event
+
+function videoReady(){
+
+document.getElementById("videoMsg").innerHTML =
+"Video ready to play";
+
+}
+
+
+
+
+// load saved preference
+
+window.onload=function(){
+
+
+let saved =
+localStorage.getItem("preferredEvent");
+
+
+if(saved){
+
+document.getElementById("eventType").value=saved;
+
+}
+
+}
+
+
+
+
+
+// clear storage
+
+function clearPreference(){
+
+localStorage.clear();
+
+sessionStorage.clear();
+
+alert("Preferences cleared");
+
+}
+
+
+
+
+
+// geolocation
+
+function findLocation(){
+
+
+navigator.geolocation.getCurrentPosition(
+showPosition,
+showError,
+{
+enableHighAccuracy:true,
+timeout:5000
+}
+
+);
+
+
+}
+
+
+
+function showPosition(position){
+
+
+document.getElementById("location").innerHTML =
+"Latitude: "
++ position.coords.latitude
++
+"<br>Longitude: "
++
+position.coords.longitude;
+
+
+}
+
+
+
+function showError(error){
+
+
+if(error.code==1){
+
+alert("Location Permission Denied");
+
+}
+
+else if(error.code==3){
+
+alert("Location Timeout");
+
+}
+
+else{
+
+alert("Location Error");
+
+}
+
+
+}
+
+
+
+
+// before leaving page
+
+function warningMessage(){
+
+return "You have unfinished changes";
+
+}
+
+
+
+</script>
+
+
+
 </body>
+
+
 </html>
